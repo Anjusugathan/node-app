@@ -1,12 +1,5 @@
 version: 0.2
-Resources:
-  - TargetService:
-      Type: AWS::ECS::Service
-      Properties:
-        TaskDefinition: <TASK_DEFINITION>
-        LoadBalancerInfo:
-          ContainerName: "nodeapp"
-          ContainerPort: 8080
+
 phases:
   pre_build:
     commands:
@@ -32,7 +25,6 @@ phases:
       - printf '[{"name":"nodeapp","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
       - cat imagedefinitions.json 
       - printf '{"ImageURI":"image_URI"}' > imageDetail.json
-      
 artifacts:
   files:
     - 'image*.json'
