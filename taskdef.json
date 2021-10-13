@@ -1,0 +1,23 @@
+{
+    "executionRoleArn": "arn:aws:iam::837100228263:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+        {
+            "name": "nodeapp",
+            "image": "837100228263.dkr.ecr.us-east-1.amazonaws.com/firstnodeapp",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 8080,
+                    "protocol": "tcp",
+                    "containerPort": 8080
+                }
+            ]
+        }
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "networkMode": "awsvpc",
+    "cpu": "256",
+    "memory": "512"
+}
